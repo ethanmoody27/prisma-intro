@@ -11,15 +11,15 @@ datasource db {
 }
 
 model Author {
-  id     Int    @id @default(autoincrement())
-  name   String
-  books  Book[]
+  id    Int    @id @default(autoincrement())
+  name  String
+  books Book[]
 }
 
 model Book {
-  id       Int     @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   title    String
+  author   Author @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId Int
-  author   Author  @relation(fields: [authorId], references: [id])
 }
 
